@@ -1,0 +1,27 @@
+/* Container for the search form */
+.search-form-container {
+    display: flex;
+    justify-content: center; /* Center the form horizontally */
+    align-items: center; /* Center the form vertically */
+    background: rgba(0, 0, 0, 0.1); /* Slightly darker background to see the form */
+}
+
+/* Styles for the search form */
+.search-form {
+    background: rgba(255, 255, 255, 0.8); /* White background with 80% transparency */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    width: 100%;
+    max-width: 400px; /* Limit the width of the form */
+}
+
+/* Adjust form group spacing */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Adjust button style */
+.btn-primary {
+    width: 100%; /* Full width button */
+}

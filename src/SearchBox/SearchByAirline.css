@@ -1,0 +1,44 @@
+.searchByAirline-box {
+    position: absolute;
+    top: 90%; /* Position below the search bar */
+    left: 2%;
+    width: 100%; /* Match width of the search bar */
+    background-color: #000000a8;
+    /* border: 1px solid #ddd; */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure dropdown appears above other content */
+    transition: opacity 0.3s ease;
+    }
+    
+    .searchByAirline-box.hide {
+      display: none;
+    }
+    
+    .searchByAirline-box.show {
+      display: block;
+    }
+    
+    .close-btn {
+        position: absolute;
+        right: 0;
+      background: black;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .input-div{
+        border-radius: 10px
+    }
+    
+    .input-field:focus{
+        box-shadow: none !important;
+    }
+
+    .input-field::placeholder {
+        color: rgba(255, 255, 255, 0.6) !important; 
+        /* opacity: 1;  */
+      }

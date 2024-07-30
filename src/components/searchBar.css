@@ -1,0 +1,24 @@
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    border-radius: 25px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    padding: 5px;
+    /* width: auto; */
+  }
+  
+  /* Styling for the search input field */
+  .search-bar input {
+    border: none;
+    width: 18vw;
+    outline: none;
+    border-radius: 25px; /* Rounded corners for the input field */
+    flex: 1; /* Take up remaining space */
+  }
+  
+  /* Placeholder styling */
+  .search-bar input::placeholder {
+    color: #888888; /* Placeholder text color */
+    opacity: 1; /* Ensure the placeholder text is fully opaque */
+  }

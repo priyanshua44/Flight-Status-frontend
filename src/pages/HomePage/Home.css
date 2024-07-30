@@ -1,0 +1,137 @@
+
+/* @media (max-width: 767px) {
+  .background-wrapper {
+    height: 50vh;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .background-wrapper {
+    height: 80vh;
+  }
+} */
+
+.bg-img{
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.flight-tracker-text {
+  position: absolute;
+  left: 67vw;
+  top: 33vh;
+  z-index: -1;
+}
+
+.flight-text {
+  color: black;
+  font-size: 65px;
+  font-family: sans-serif;
+  /* text-shadow: 0px 1px 4px #898989; */
+  text-shadow: 1px 1px 1px #a0a0a0;
+  font-weight: 600;
+}
+
+.tracker-text {
+  color: black;
+  font-size: 45px;
+  font-family: sans-serif;
+  /* text-shadow: 0px 1px 4px #898989; */
+  text-shadow: 1px 1px 1px #a0a0a0;
+  font-weight: 600;
+  position: absolute;
+  top: 72px;
+}
+
+.tagline {
+  position: absolute;
+  font-size: 21px;
+  color: black;
+  top: 79vh;
+  left: 7vw;
+  font-weight: 600;
+  font-family: sans-serif;
+  text-shadow: 1px 1px 1px #a0a0a0;
+  z-index: -1;
+}
+
+.background-wrapper{
+  overflow-x: hidden;
+    position: relative;
+    width:100%;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+.cloud img {
+  max-width: 100%;
+  max-height: 100vh;
+    left: 0;
+    top: 0;
+    object-fit: cover !important;
+    position: absolute;
+    -webkit-user-select: none; 
+    -moz-user-select: none;   
+    -ms-user-select: none;
+    user-select: none;    
+    pointer-events: none;
+}
+@-webkit-keyframes animCloud {
+  from {
+      -webkit-transform: translateX(100%)
+  }
+  to {
+      -webkit-transform: translateX(-100%)
+  }
+}
+@-moz-keyframes animCloud {
+  from {
+      -moz-transform: translateX(100%)
+  }
+  to {
+      -moz-transform: translateX(-100%)
+  }
+}
+@keyframes animCloud {
+  from {
+      -webkit-transform: translateX(100%);
+      -moz-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+      -o-transform: translateX(100%);
+      transform: translateX(100%)
+  }
+  to {
+      -webkit-transform: translateX(-100%);
+      -moz-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+      -o-transform: translateX(-100%);
+      transform: translateX(-100%)
+  }
+}
+.cloud1 {
+  -webkit-animation: animCloud 20s infinite linear;
+  -moz-animation: animCloud 20s infinite linear;
+  animation: animCloud 20s infinite linear
+}
+.cloud2 {
+  -webkit-animation: animCloud 40s infinite linear;
+  -moz-animation: animCloud 40s infinite linear;
+  animation: animCloud 40s infinite linear
+}
+.cloud3 {
+  -webkit-animation: animCloud 60s infinite linear;
+  -moz-animation: animCloud 60s infinite linear;
+  animation: animCloud 60s infinite linear
+}
+.cloud4 {
+  -webkit-animation: animCloud 80s infinite linear;
+  -moz-animation: animCloud 80s infinite linear;
+  animation: animCloud 80s infinite linear
+}
+
+

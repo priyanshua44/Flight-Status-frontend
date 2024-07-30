@@ -1,0 +1,13 @@
+.search-form {
+  position: absolute;
+  left: 9vw;
+  top: 5vh;
+  z-index: 100;
+}
+
+.search-box {
+  /* background-image: url("../assets/clouds.jpg"); */
+  background-color: #00000021;
+}
+
+

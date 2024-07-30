@@ -1,0 +1,32 @@
+.dropdown-box {
+    position: absolute;
+    top: 90%; /* Position below the search bar */
+    left: 2%;
+    width: 100%; /* Match width of the search bar */
+    background-color: #000000a8;
+    /* border: 1px solid #ddd; */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure dropdown appears above other content */
+    transition: opacity 0.3s ease;
+  }
+  
+  .dropdown-box.hide {
+    display: none;
+  }
+  
+  .dropdown-box.show {
+    display: block;
+  }
+  
+  .dropdown-box a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .dropdown-box a:hover {
+    background-color: black;
+  }
+  
