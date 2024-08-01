@@ -14,11 +14,18 @@ import StatusCard from '../../components/StatusCard';
 export default function Home() {
     const [data, setData] = useState(null);
     const [showStatusCard, setShowStatusCard] = useState(false);
+    const [showDelayCard, setShowDelayCard] = useState(true);
 
     const handleDataFromNavbar = (dataFromNavbar) => {
         setData(dataFromNavbar);
         setShowStatusCard(true);
     };
+
+    const handleDelayItemClick = (dataFromDelayCard) => {
+        setShowDelayCard(false);
+        setShowStatusCard(true);
+        setData(dataFromDelayCard);
+    }
 
     return (
         <>
@@ -26,10 +33,10 @@ export default function Home() {
 
                 <Navbar onData={handleDataFromNavbar} />
 
-{!showStatusCard && 
- <DelayFlights />
-}
-               
+                {!showStatusCard &&
+                    <DelayFlights  onItemClick={handleDelayItemClick} />
+                }
+
                 {showStatusCard &&
                     <StatusCard data={data} />
                 }

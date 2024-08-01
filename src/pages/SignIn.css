@@ -1,0 +1,72 @@
+.signin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #121212; /* Dark background */
+  }
+  
+  .signin-form-wrapper {
+    background: rgba(255, 255, 255, 0.1); /* Light translucent background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  .signin-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .signin-title {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .signin-form-group {
+    margin-bottom: 15px;
+  }
+  
+  .signin-label {
+    color: #ddd;
+    margin-bottom: 5px;
+  }
+  
+  .signin-input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    width: 100%;
+  }
+  
+  .signin-input::placeholder {
+    color: #aaa;
+  }
+  
+  .signin-button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #28a745; /* Green button */
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .signin-button:hover {
+    background: #218838; /* Darker green on hover */
+  }
+  
+  /* Responsive design */
+  @media (max-width: 600px) {
+    .signin-form-wrapper {
+      width: 100%;
+      padding: 15px;
+    }
+  }
+  

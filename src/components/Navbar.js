@@ -1,18 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import "./navbar.css";
+import { auth, db } from "../firebase/firebase";
 import SearchBar from "./SearchBar";
 import DropdownBox from "../SearchBox/DropDownBox";
 import SearchByFlightNumber from "../SearchBox/SearchByFlightNumber";
 import SearchByAirline from "../SearchBox/SearchByAirline";
 import SearchByRoute from "../SearchBox/SearchByRoute";
-import SearchByRouteResult from "../SearchBox/SearchByRouteResult";
-import SearchByAirlineResult from "../SearchBox/SearchByAirlineResult";
+import { fetchUserData } from "../firebase/userhandler";
 import SearchByFlightNumberResult from "../SearchBox/SearchByFlightNumberResult";
+import { ToastContainer, toast } from 'react-toastify';
 
-export default function Navbar({onData}) {
-
+export default function Navbar({ onData }) {
+  const [userDetails, setUserDetails] = useState(null);
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [activeBox1, setActiveBox1] = useState(null);
   const [activeBox2, setActiveBox2] = useState(null);
@@ -23,6 +24,25 @@ export default function Navbar({onData}) {
   const [sharedData, setSharedData] = useState(null);
   const [boxWidth, setBoxWidth] = useState('200px'); // Default width
   const searchBarRef = useRef(null);
+  const Navigate = useNavigate();
+
+  // for user login and singup 
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        const data = await fetchUserData();
+        if (data) {
+          setUserDetails(data);
+        } else {
+          console.log("User is not logged in or no user data available");
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    getUserData();
+  }, []);
 
   const handleDataFromResult = (dataFromResult) => {
     onData(dataFromResult);
@@ -98,6 +118,29 @@ export default function Navbar({onData}) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  async function handleLogout() {
+    try {
+      await auth.signOut();
+      console.log("User logged out successfully!");
+      toast.success('Logged out successfully!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 2000);
+      // Navigate("/login");
+    } catch (error) {
+      console.error("Error logging out:", error.message);
+    }
+  }
+
+
 
   return (
     <>
@@ -116,7 +159,7 @@ export default function Navbar({onData}) {
                 <SearchByFlightNumber isVisible={!!activeBox1} onLinkClick={handleAdditionalBoxClick} onClose={handleCloseBox} width={boxWidth}
                 />
               )}
-              {activeBox2   && (
+              {activeBox2 && (
                 <SearchByRoute isVisible={!!activeBox2} onClose={handleCloseBox} onLinkClick={handleAdditionalBoxClick} width={boxWidth}
                 />
               )}
@@ -140,7 +183,7 @@ export default function Navbar({onData}) {
                 <SearchByFlightNumberResult isVisible={!!activeBox6} onSendData={handleDataFromResult} data={sharedData} onClose={handleCloseBox} width={boxWidth}
                 />
               )}
-              
+
 
             </div>
             <button
@@ -163,20 +206,35 @@ export default function Navbar({onData}) {
                 </li> */}
 
                 <li className="nav-item px-1">
-                  <a className="nav-link" href="#">
-                    About
+                  <a className="nav-link" href="/">
+                    Home
                   </a>
                 </li>
-                <li className="nav-item px-1">
-                  <a className="nav-link d-flex" href="#">
-                    <i className="fa-solid fa-user fa-lg align-content-center me-2"></i> Login/SignUp
-                  </a>
-                </li>
-                <li className="nav-item px-1">
-                  <a className="nav-link" href="#">
-                    <i className="fa-solid fa-bell fa-lg"></i>
-                  </a>
-                </li>
+                {userDetails ? (
+                  <>
+                    <li className="nav-item dropdown px-1">
+                      <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i className="fa-solid fa-user fa-lg align-content-center me-2"></i>
+                        {userDetails.name}
+                      </a>
+                      <ul className="dropdown-menu bg-dark text-white">
+                        <li className=""><button className="dropdown-item bg-dark text-white" onClick={handleLogout}>
+                          Logout
+                        </button></li>
+                      </ul>
+                    </li>
+                  </>
+                ) : (
+                  <li className="nav-item px-1">
+                    <a className="nav-link" href="#">
+                      <i className="fa-solid fa-user fa-lg align-content-center me-2"></i>
+                      <Link className="text-decoration-none text-dark" to="/signin">Login/SignUp</Link>
+                    </a>
+                  </li>
+
+                )
+                }
+<ToastContainer />
 
               </ul>
             </div>

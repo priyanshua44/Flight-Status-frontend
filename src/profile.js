@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { auth, db } from "./firebase";
+import { auth, db } from "./firebase/firebase";
 import { doc, getDoc } from "firebase/firestore";
+import {fetchUserData} from "./firebase/userhandler";
 
 function Profile() {
   const [userDetails, setUserDetails] = useState(null);
-  const fetchUserData = async () => {
-    auth.onAuthStateChanged(async (user) => {
-      console.log(user);
 
-      const docRef = doc(db, "Users", user.uid);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        setUserDetails(docSnap.data());
-        console.log(docSnap.data());
-      } else {
-        console.log("User is not logged in");
-      }
-    });
-  };
   useEffect(() => {
-    fetchUserData();
-  }, []);
+    const getUserData = async () => {
+      try {
+        const data = await fetchUserData();
+        if (data) {
+          setUserDetails(data);
+        } else {
+          console.log("User is not logged in or no user data available");
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
 
+    getUserData();
+  }, []);
+  
   async function handleLogout() {
     try {
       await auth.signOut();

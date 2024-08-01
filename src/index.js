@@ -3,10 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import SignUp from './SignUp';
-import * as ServiceWorkerRegistration from './serviceWorkerRegistration';
-import { messaging, requestPermission } from './firebase';
-import { getToken } from 'firebase/messaging';
 
 // Request permission and get token
 // const requestPermission = async () => {
@@ -32,11 +28,6 @@ root.render(
   </React.StrictMode>
 );
 
-// Register the service worker
-// ServiceWorkerRegistration.register();
-
-// Request notification permission
-// requestPermission();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

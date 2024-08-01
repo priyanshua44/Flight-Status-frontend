@@ -9,18 +9,27 @@ import UpdateUser from "./components/UpdateUser";
 import FlightData from "./components/FlightData"
 import StatusCard from "./components/StatusCard";
 import Home from "./pages/HomePage/Home";
-import SignUp from "./SignUp";
-import Login from "./Login";
 import Profile from "./profile";
-import { requestPermission } from "./firebase";
-import { messaging } from "./firebase";
-import { getToken } from "firebase/messaging";
+import { requestPermission } from "./firebase/firebase";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 
 export default function () {
-  useEffect(() => {
-    // Req user for notification permission
-    requestPermission();
-  }, []);
+  // useEffect(() => {
+  //   requestPermission();
+  // }, []);
+
+  // if ('serviceWorker' in navigator) {
+  //   window.addEventListener('load', () => {
+  //     const swUrl = `${process.env.PUBLIC_URL}/firebase-messaging-sw.js`;
+  
+  //     navigator.serviceWorker.register(swUrl).then((registration) => {
+  //       console.log('Service Worker registered with scope:', registration.scope);
+  //     }).catch((error) => {
+  //       console.error('Service Worker registration failed:', error);
+  //     });
+  //   });
+  // }
 
   return (
     <>
@@ -33,9 +42,9 @@ export default function () {
           <Route exact path="/flights" element={<FlightData />} />
           <Route exact path="/status" element={<StatusCard />} />
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/signup" element={<SignUp />} />
-          <Route exact path="/login" element={<Login />} />
           <Route exact path="/profile" element={<Profile />} />
+          <Route exact path="/signup" element={<SignUp />} />
+          <Route exact path="/signin" element={<SignIn />} />
         </Routes>
       </Router>
     </>
